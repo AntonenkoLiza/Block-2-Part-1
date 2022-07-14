@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Рубашка Medicine</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.ambiance.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src ="js/jquery.ambiance.js"></script>
+	<style type="text/css">
+	.ambiance-custom {
+ 	 background: #006be5;
+ 	 color: white;
+ 	 padding: 10px;
+ 	 margin-right: 20px;
+ 	 font-family: sans-serif;
+ 	 font-size: 12px;
+}
+	</style>
 </head>
+
 <body>
-	
+
 <div class="card">
-	
-	<div id="gallery-container">
+		<div id="gallery-container">
 		<div class="gallery-item">
 			<img src="image/1.jpg" class="gallery-preview">
 			<img src="image/2.jpg" class="gallery-fullsize">
@@ -28,16 +41,15 @@
 		</div>
 	</div>
 
+
 	<div class="card__text">
 		<div class="card__title">
 			<p>Рубашка MEDICINE</p>
 		</div>
 		<div class="card__menu">
-			 <ul>
-			 	<li><a href="#">Рубашка Medicine</a></li>
-			 	<li><a href="#">Все модели Medicine</a></li>
-			 	<li><a href="#">Рубашки</a></li>
-			 </ul>
+			 <div class="card__menu-item"><a href="#">Рубашка Medicine</a></div>
+			 <div class="card__menu-item"><a href="#">Все модели Medicine</a></div>
+			 <div class="card__menu-item"><a href="#">Рубашки</a></div>
 		</div>
 		<div class="card__price">
 			<div class="card__price-1">2 699</div>
@@ -46,35 +58,46 @@
 		</div>
 		<div class="card__service card_font-size_12">
 			<div class="card__service-1">
-				<img src="image/ok.jpg">
-				<span>В наличии в магазинах <a href="https://www.lamoda.ru/">Lamoda</a></span>
+				<div class="card__service-image"><img src="image/ok.jpg"></div>
+				В наличии в магазинах 
+				<a href="https://www.lamoda.ru/">Lamoda</a>
 			</div>	
 			<div class="card__service-2">
-				<img src="image/car.jpg">
-				<span>Бесплатная доставка</span>
+				<div class="card__service-image"><img src="image/car.jpg"></div>
+				Бесплатная доставка
 			</div>		
 		</div>
-		<a href="https://www.lamoda.ru/" class=" card__btn card__btn-in-shop card_font-size_12">В магазин</a>
-		<a href="" class="card__btn card__btn-select card_font-size_12">В избранное</a>
+		
+		<div class="card__amount">
+			<div class="amount-plus">+</div>
+			<div class="amount-product">0</div>
+			<div class="amount-minus">-</div>
+		</div>
+
+		<div class="card__actions">
+			<button class="card__btn card__btn_blue" name="Buy"> купить </button>
+			<button class="card__btn" > В избранное </button>
+		</div>
+		
 		<div class="card__text-body card_font-size_12">
-			Рубашка Medicine выполнена из вискозной ткани с клетчатым узором<br>
-			Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.
+			<p>Рубашка Medicine выполнена из вискозной ткани с клетчатым узором.</p>
+			<p>Детали: прямой крой; отложной воротник; планка и манжеты на пуговицах; карман на груди.</p>
 		</div>
 		<div class="card__share card_font-size_12">
-			<span>Поделиться:</span>
+			Поделиться:
 			<div class="card__icon">
-				<div class="icon-1 icon">
-					<a href="#"><img src="image/B.png"></a>
-				</div>
-				<div class="icon-2 icon">
-					<a href="#"><img src="image/google.jpg"></a>
-				</div>
-				<div class="icon-3 icon">
-					<a href="#"><img src="image/facebook.jpg"></a>
-				</div>
-				<div class="icon-4 icon">
-					<a href="#"><img src="image/twiter.jpg"></a>
-				</div>				
+				<a href="#">
+					<img class="network" src="image/vk.jpg">
+				</a>
+				<a href="">
+					<img class="network" src="image/telegram.jpg">
+				</a>		
+				<a href="">
+					<img class="network" src="image/facebook.jpg">
+				</a>
+				<a href="">
+					<img class="network" src="image/twiter.jpg">
+				</a>	
 			</div>
 			<div class="card__share-all">
 				123
@@ -83,6 +106,44 @@
 	</div>
 
 </div>
-
+<script type="text/javascript">
+		$("img.gallery-preview").mouseenter(function(e){
+			$('img.gallery-fullsize').hide();
+			var fthis = $(this).next();
+			fthis.show();
+		});
+		var col = 0;
+		$('.amount-plus').click(function(e){
+			if(col >= 0){
+				col++;
+			}
+			$(this).next().html(col);	
+		});
+		$('.amount-minus').click(function(e){
+			
+			if( col > 0){
+				col--;
+			}
+			$(this).prev().html(col);
+		});
+		$('button[name="Buy"]').click(function(){
+			if(col==1) {
+				$.ambiance({message: `В корзину добавлен ${col} товар`,
+            	width: 300,
+            	type: "custom",
+            	timeout: 5});
+			} else if(col>=2 && col<=4) {
+				$.ambiance({message: `В корзину добавлено ${col} товара`,
+            	width: 300,
+            	type: "custom",
+            	timeout: 5});
+			} else if(col!=0){
+				$.ambiance({message: `В корзину добавлено ${col} товаров`,
+            	width: 300,
+            	type: "custom",
+            	timeout: 5});
+			}
+		});
+</script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 body{
 	background: rgba(0, 0, 0, 0.1);
-	display: flex;
+	display: flex; 
 	justify-content: center;
 }
 #gallery-container{
@@ -28,9 +28,9 @@ img.gallery-fullsize {
 div.gallery-item {
 	margin: 0 0 29px 0;
 }
-img.gallery-preview:hover ~ img.gallery-fullsize {
+/*img.gallery-preview:hover ~ img.gallery-fullsize {
 	display: block;
-}
+}*/
 .gallery-container__button-next{
 	position: absolute;
 	width: 42px;
@@ -49,24 +49,24 @@ img.gallery-preview:hover ~ img.gallery-fullsize {
 .card__text{
 	position: relative;
 	display: block;
-	width: 414px;
+	max-width: 414px;
 	height: 510px;
 	top: 0;
 	right: 0;
 	padding-left: 60px;
 	font-family: sans-serif;
 }
-.card__title{
-	text-transform: uppercase; /* Регистр символов:  все прописные*/
-	font-size: 18px;
-	margin: 55px 0px 20px 0px;
-	font-weight: bold; /* Жирное написание */
+.card__title {
+	margin-top: 55px;
 }
-ul {
-	list-style: none;
-	margin: 0; 
-	padding-left: 0;
-	margin-bottom: 55px;
+.card__title p {
+	text-transform: uppercase; 
+	font-size: 18px;
+	margin: 0;
+	font-weight: bold; 
+}
+.card__menu {
+	margin-top: 20px;
 	font-size: 13px; 
 	display: flex;
 }
@@ -74,24 +74,27 @@ a {
 	text-decoration: none;
 	color: #559ced;
 }
-.card__menu > ul > li{
-	margin-right: 30px;
+.card__menu-item + .card__menu-item{
+	margin-left: 30px;
 }
 .card__price{
 	display: flex;
 	font-size: 14px;
-}
-.card__price div{
-	margin-right: 10px;
+	margin-top: 50px;
 	font-weight: bold;
 }
-div.card__price-1{
+.card__price div + div {
+	margin-left: 10px;
+}
+div.card__price-1 {
 	color: #bfbebe;
 	text-decoration: line-through;
 }
-div.card__price-2{
+div.card__price-2 {
 	color: #9a9b9a;
-	margin-right: 25px;
+}
+div.card__price-3 {
+	padding-left: 15px;
 }
 .price-promo{
 	color: #909090;
@@ -104,31 +107,54 @@ div.card__price-2{
 	background: #f4f4f4;
 	width: 341px;
 	padding: 15px 0 15px 22px ;
-	margin:15px 0 50px 0 ;
+	margin-top:15px;
+	line-height: 20px;
+}
+.card__service-image{
+	width: 25px;
+	display: inline-block;
+}
+
+button{
+	cursor: pointer;
+}
+.card__actions{
+	max-width: 500px;
+	margin-top: 15px;
+	display: flex;
+	/*justify-content: space-between;*/
 }
 .card__btn{
-	padding: 15px 45px;
-	margin-right: 10px;
+	padding: 0 15px;
+	height: 40px;
+	font-size: 12px;
+	font-weight: 500;
 	text-transform: uppercase;
+	min-width: 160px;
+	border: 2px solid white;
+	background-color: white;
 }
-a.card__btn-in-shop{
-	background: #006be5;
+.card__btn_blue{
 	color: white;
+	background-color: #006be5;
+	border: 2px solid #006be5;
 }
-a.card__btn-select{
-	color: black;
+.card__btn + .card__btn{
+	margin-left: 10px;
 }
+
 .card__text-body{
 	color: #a8a8a8;
-	margin: 55px 0 30px 0;
+	margin-top: 30px;
+}
+.card__text-body p{
+	margin: 0;
 }
 .card__share{
 	display: flex;
-	position: absolute;
-	bottom: 0;
+	margin-top: 30px;
 	text-transform: uppercase;
 	align-items: center;
-	margin: 10px 0;
 }
 .card__icon{
 	display: flex;
@@ -136,32 +162,13 @@ a.card__btn-select{
 	justify-content: center;
 	margin-left: 22px;
 }
-.icon-1{ background: #08587e;}
-.icon-2{ background: #f4232f;}
-.icon-3{ background: #155b9c;}
-.icon-4{ background: #00b1e3;}
-div.icon{
-	display: flex;
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	align-items: center;
-	justify-content: center;
-	padding: 0;
-	margin-right: 15px;
+.network {
+	width: 25px;
 }
-div.icon > a{
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.card__icon a + a{
+	margin-left: 10px;
 }
-div.icon:last-child{
-	margin: 0;
-}
-.icon img{
-	width: 11px;
-	height: 15px;
-}
+
 .card__share-all{
 	display: flex;
 	align-items: center;
@@ -169,4 +176,27 @@ div.icon:last-child{
 	padding: 8px 10px 8px 10px;
 	background: #efefef;
 	margin-left: 15px;
+}
+
+.amount-plus, .amount-minus{
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border: 1.5px solid lightgray;
+	text-align: center;
+}
+.card__amount{
+	margin-top: 15px;
+	display: flex;
+	justify-content: center;
+	font-size: 20px;
+}
+.amount-product{
+	height: 40px;
+	width: 100px;
+	border-top: 1.5px solid lightgray;
+	border-bottom: 1.5px solid lightgray;
+	line-height: 40px;
+	text-align: center;
+	background-color: #f4f4f4;
 }
