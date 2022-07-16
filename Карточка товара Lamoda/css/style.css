@@ -1,7 +1,32 @@
+@font-face {
+  font-family: 'Circe300';
+  font-style: normal;
+  font-weight: 300;
+  src: local("Circe300"),
+       url("C:/Users/s-shc/Desktop/Блок 2/Карточка товара Lamoda/fonts/circe_300.ttf") format("ttf"),
+       url("C:/Users/s-shc/Desktop/Блок 2/Карточка товара Lamoda/fonts/circe_300.woff2") format("woff2"),
+       url("C:/Users/s-shc/Desktop/Блок 2/Карточка товара Lamoda/fonts/circe_300.woff") format("woff");
+}
+@font-face {
+  font-family: 'Circe600';
+  font-style: normal;
+  font-weight: 600;
+  src: local("Circe600"),
+       url("C:/Users/s-shc/Desktop/Блок 2/Карточка товара Lamoda/fonts/circe_600.woff2") format("woff2");
+}
+.ambiance-custom {
+ 	 background: #006be5;
+ 	 color: white;
+ 	 padding: 10px;
+ 	 margin-right: 20px;
+ 	 font-family: "Circe600","Circe300",sans-serif;
+ 	 font-size: 12px;
+}
 body{
 	background: rgba(0, 0, 0, 0.1);
 	display: flex; 
 	justify-content: center;
+	font-family: "Circe600","Circe300", sans-serif;
 }
 #gallery-container{
 	width: 460px;
@@ -14,23 +39,25 @@ body{
 	display: flex;
 	background: white;
 }
-img.gallery-fullsize {
+.gallery-fullsize {
 	position: absolute;
 	width: 340px;
 	height: 492px;
 	top: 0;
 	right: 0;
-	display: none;
 }
-.gallery-item:first-child img.gallery-fullsize {
-	display: block;
+.gallery-fullsize img{
+	width: 100%;
 }
 div.gallery-item {
+	display: flex;
+	max-width: 90px;
+	flex-direction: column;
+}
+.gallery-item img{
 	margin: 0 0 29px 0;
 }
-/*img.gallery-preview:hover ~ img.gallery-fullsize {
-	display: block;
-}*/
+
 .gallery-container__button-next{
 	position: absolute;
 	width: 42px;
@@ -54,10 +81,9 @@ div.gallery-item {
 	top: 0;
 	right: 0;
 	padding-left: 60px;
-	font-family: sans-serif;
 }
 .card__title {
-	margin-top: 55px;
+	margin-top: 30px;
 }
 .card__title p {
 	text-transform: uppercase; 
@@ -100,15 +126,13 @@ div.card__price-3 {
 	color: #909090;
 	font-weight: normal;
 }
-.card_font-size_12{
-	font-size: 12px;
-}
 .card__service{
 	background: #f4f4f4;
 	width: 341px;
 	padding: 15px 0 15px 22px ;
 	margin-top:15px;
 	line-height: 20px;
+	font-size: 12px;
 }
 .card__service-image{
 	width: 25px;
@@ -122,7 +146,6 @@ button{
 	max-width: 500px;
 	margin-top: 15px;
 	display: flex;
-	/*justify-content: space-between;*/
 }
 .card__btn{
 	padding: 0 15px;
@@ -146,6 +169,7 @@ button{
 .card__text-body{
 	color: #a8a8a8;
 	margin-top: 30px;
+	font-size: 12px;
 }
 .card__text-body p{
 	margin: 0;
@@ -155,6 +179,7 @@ button{
 	margin-top: 30px;
 	text-transform: uppercase;
 	align-items: center;
+	font-size: 12px;
 }
 .card__icon{
 	display: flex;
@@ -171,11 +196,19 @@ button{
 
 .card__share-all{
 	display: flex;
+	position: relative;
 	align-items: center;
 	justify-content: center;
 	padding: 8px 10px 8px 10px;
 	background: #efefef;
 	margin-left: 15px;
+}
+.card__share-all::before {
+	content: '';
+	position: absolute; 
+	left: -14px;
+  border: 7px solid transparent;
+  border-right: 7px solid #efefef; 
 }
 
 .amount-plus, .amount-minus{
